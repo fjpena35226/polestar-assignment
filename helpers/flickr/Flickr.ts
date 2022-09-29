@@ -1,7 +1,7 @@
 import axios from 'axios'
-import { PhotoApi } from './types/photo'
+import { Photo } from './types/photo'
 
-type flickrQueryProps = {
+type FlickrQueryProps = {
   /**
    * @description: The flickr API method
    */
@@ -20,19 +20,24 @@ type flickrQueryProps = {
   otherParams: { [key: string]: string }
 }
 
+/**
+ * Fetch a get query from the flickr API
+ * @param object
+ * @returns Promise
+ */
 export const flickrGetQuery = async ({
   method,
   perPage,
   page,
   otherParams,
-}: flickrQueryProps) => {
+}: FlickrQueryProps) => {
   try {
     const defaultParams = {
       method: method || '',
-      api_key: process.env.PUBLIC_API_KEY || '',
+      api_key: process.env.NEXT_PUBLIC_API_KEY || '',
       format: 'json',
       nojsoncallback: '1',
-      per_page: perPage || '10',
+      per_page: perPage || '12',
       page: page || '1',
       ...otherParams,
     }
@@ -47,6 +52,16 @@ export const flickrGetQuery = async ({
   }
 }
 
-export function getPhotoUrl(photo: PhotoApi) {
+/**
+ * Calc the url for a given photo
+ * @param photo 
+ * @returns 
+ */
+export function getPhotoUrl(photo: Photo) {
   return `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`
 }
+
+/**
+ * Max items per Flickr request
+ */
+export const FLICKR_MAX_ITEMS_PER_PAGE = 500
