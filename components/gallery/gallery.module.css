@@ -1,0 +1,29 @@
+.container {
+  overflow: hidden; 
+  position: relative;
+  cursor: pointer;
+  width: 25vw;
+  height: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 1024px){
+  .container {
+    width: 16vw;
+    height: 16vw;
+  }  
+}
+
+.container img {
+  transition: transform 0.5s ease;
+}
+
+.container:hover img {
+  transform: scale(1.2);
+}
+
+.container img {
+  object-fit: cover;
+}
