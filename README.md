@@ -25,3 +25,7 @@ You can learn more about this in here [Get you API KEY](https://www.flickr.com/s
 npm run test
 # or
 yarn test
+```
+
+## Considerations
+- I'm working on this example app in my spare time, out of my working hours.
