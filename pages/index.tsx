@@ -45,7 +45,7 @@ const Home: NextPage = ({
   useEffect(() => {
     const { searchText } = router?.query
     if (searchText && searchText !== search) setSearch(searchText as string)
-  }, [router.query])
+  }, [router.query, search])
 
   useEffect(() => {
     if (isError) {
@@ -55,7 +55,7 @@ const Home: NextPage = ({
       })
       console.error(error)
     }
-  }, [isError])
+  }, [isError, error, showAlert])
 
   return (
     <>
@@ -92,7 +92,7 @@ const Home: NextPage = ({
             lg={1}
             sx={{ position: 'relative', minHeight: '45px', '& img': { objectFit: 'cover' } }}
           >
-            <Image src='/img/flickr-logo-brandlogos.net_.png' layout='fill' />
+            <Image src='/img/flickr-logo-brandlogos.net_.png' layout='fill' alt='Flickr logo' />
           </Grid>
           <Grid item xs={12} sm={8} md={10}>
             <TextField
