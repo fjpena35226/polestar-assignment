@@ -1,6 +1,6 @@
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { flickrGetQuery } from '../Flickr'
-import { Photo, PhotosResult } from '../types/photo'
+import { PhotosResult } from '../types/photo'
 
 type SearchPhotosProps = {
   /**

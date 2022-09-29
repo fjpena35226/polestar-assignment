@@ -19,7 +19,7 @@ type GalleryItemProps = {
 }
 
 type GalleryProps = {
-  isLoading: boolean
+  isLoading?: boolean
   data?: InfiniteData<PhotosResult>
   onLoadMore?: Function
   hasMore?: boolean

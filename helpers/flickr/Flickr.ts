@@ -60,8 +60,3 @@ export const flickrGetQuery = async ({
 export function getPhotoUrl(photo: Photo) {
   return `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`
 }
-
-/**
- * Max items per Flickr request
- */
-export const FLICKR_MAX_ITEMS_PER_PAGE = 500
