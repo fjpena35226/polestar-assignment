@@ -31,7 +31,7 @@ const Home: NextPage = ({
   const [search, setSearch] = useState('')
   const debouncedSearch = useDebounce(search)
 
-  const { isLoading, isError, error, data, fetchNextPage, hasNextPage } =
+  const { isLoading, isError, error, data, fetchNextPage, hasNextPage, failureCount } =
     useSearchPhotos({ search: debouncedSearch, initialData: photos })
 
   const { showAlert, closeAlert, alertOpen, alertMessage, alertColor } =
@@ -48,7 +48,7 @@ const Home: NextPage = ({
   }, [router.query, search])
 
   useEffect(() => {
-    if (isError) {
+    if (isError && !alertOpen && failureCount < 5) {
       showAlert({
         alertMessage: 'Something went wrong trying to get the images',
         alertColor: 'error',
